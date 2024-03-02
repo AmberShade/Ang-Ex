@@ -1,0 +1,20 @@
+<hr />
+<form>
+  <label for="addItemName">Name: </label>
+  <input type="text" id="addItemName" [(ngModel)]="newItem.name" name="name" required />
+  <label for="addItemCreated">Start date: </label>
+  <input type="datetime" id="addItemCreated" [(ngModel)]="newItem.created" name="created" required />
+  <label for="addItemDeadl">Due: </label>
+  <input type="datetime" id="addItemDeadl" [(ngModel)]="newItem.deadl" name="deadl" /><br />
+  <label for="addItemDescr">Description: </label>
+  <input type="text" id="addItemDescr" [(ngModel)]="newItem.descr" name="descr" /><br />
+  <label for="addItemTags">Tags: </label>
+  <input type="text" id="addItemTags" [(ngModel)]="newItem.tags" name="tags" />
+  <label for="addItemPrio">Priority level: </label>
+  <input type="number" id="addItemPrio" [(ngModel)]="newItem.priority" name="priority" required /><br />
+  <label for="addItemParent">Parent ID: </label>
+  <input type="text" id="addItemParent" [(ngModel)]="newItem.parent" name="parent"/>
+  <label for="addItemState">State: </label>
+  <input type="text" id="addItemState" [(ngModel)]="newItem.state" name="state" required />
+</form>
+<button (click)="create()">Save</button>

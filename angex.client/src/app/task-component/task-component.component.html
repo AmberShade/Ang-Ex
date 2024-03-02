@@ -1,0 +1,32 @@
+<hr />
+<div *ngIf="(task&&!editing)">
+  <p id="taskNo{{task.id}}">{{task.id}}: {{task.name}} created at {{task.created}} <span *ngIf="task.deadl"> and expires at {{task.deadl}}</span></p>
+  <p *ngIf="task.descr">Description: {{task.descr}}</p>
+  <p *ngIf="task.tags">Tags: {{task.tags}}</p>
+  <p>State: {{task.state}} (supposed to be in a descriptive format)
+  <span *ngIf="task.priority>=0">Priority: {{task.priority}}</span>
+  <a *ngIf="task.parent>0" href="#taskNo{{task.parent}}">Parent task</a></p>
+  <p> Actions: <button (click)="delClick()">Delete</button> <button (click)="editing=true">Edit</button></p>
+</div>
+<div *ngIf="editing">
+  <form>
+    <label for="addItemName">{{temptask.id}} Name: </label>
+    <input type="text" id="addItemName" [(ngModel)]="temptask.name" name="name" required />
+    <label for="addItemCreated">Start date: </label>
+    <input type="datetime" id="addItemCreated" [(ngModel)]="temptask.created" name="created" required />
+    <label for="addItemDeadl">Due: </label>
+    <input type="datetime" id="addItemDeadl" [(ngModel)]="temptask.deadl" name="deadl" /><br />
+    <label for="addItemDescr">Description: </label>
+    <input type="text" id="addItemDescr" [(ngModel)]="temptask.descr" name="descr" /><br />
+    <label for="addItemTags">Tags: </label>
+    <input type="text" id="addItemTags" [(ngModel)]="temptask.tags" name="tags" />
+    <label for="addItemPrio">Priority level: </label>
+    <input type="number" id="addItemPrio" [(ngModel)]="temptask.priority" name="priority" required /><br />
+    <label for="addItemParent">Parent ID: </label>
+    <input type="text" id="addItemParent" [(ngModel)]="temptask.parent" name="parent" />
+    <label for="addItemState">State: </label>
+    <input type="text" id="addItemState" [(ngModel)]="temptask.state" name="state" required />
+  </form>
+  <p> Actions: <button (click)="cancelEdit()">Cancel</button> <button (click)="saveChanges()">Save</button></p>
+</div>
+<p *ngIf="!task">no task provided</p>
